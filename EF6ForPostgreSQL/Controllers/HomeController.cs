@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using EF6ForPostgreSQL.Models;
 using System.Web.Mvc;
 
 namespace EF6ForPostgreSQL.Controllers
@@ -11,6 +8,15 @@ namespace EF6ForPostgreSQL.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult GetCategories()
+        {
+            SampleDbContext dbContext = new SampleDbContext();
+
+            var result = dbContext.Categories;
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult About()
